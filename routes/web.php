@@ -44,4 +44,12 @@ Route::middleware(['auth'])->group(function () {
         $token->delete();
         return back();
     });
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard', [
+                'jobs' => Auth::user()->encodingJobs()->latest()->limit(10)->get()
+            ]);
+        })->name('dashboard');
+    });
 });

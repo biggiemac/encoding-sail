@@ -69,4 +69,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ApiToken::class);
     }
+
+    public function encodingJobs()
+{
+    return $this->hasMany(EncodingJob::class);
+}
 }
